@@ -3,6 +3,7 @@
 ## Due 12-15-2016 (11:59pm)
 
 ## Author
+Morgan Boon
 
 ## Description
 
@@ -132,5 +133,6 @@ the culprit, but I don't know which ones.
 | Total                                   | 100    |
 
 ## Outside Resources Used
-
+w3schools.com
 ## Known Problems, Issues, And/Or Errors in the Program
+None

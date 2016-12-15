@@ -1,0 +1,82 @@
+﻿@model IEnumerable<cis237assignment6.Models.Beverage>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Beverages</h2>
+
+<div class="form-group">
+    <fieldset>
+        <legend>Filter</legend>
+        @{
+            using (Html.BeginForm("Filter", "Beverages", FormMethod.Post, new {@class = "form-inline"}))
+            {
+                @Html.AntiForgeryToken()
+
+                <label for="name">Name</label>
+                @Html.TextBox("name", (string) ViewBag.nameFilter)
+
+                <label for="pack">Pack</label>
+                @Html.TextBox("pack", (string) ViewBag.packFilter)
+
+                <label for="minPrice">Minimum Price</label>
+                @Html.TextBox("minPrice", (string) ViewBag.minPriceFilter)
+
+                <label for="maxPrice">Maximum Price</label>
+                @Html.TextBox("maxPrice", (string) ViewBag.maxPriceFilter)
+
+                <br/>
+
+                <input type="submit" value="Filter" class="btn btn-info pull-right"/>
+            }
+        }
+    </fieldset>
+</div>
+<br/>
+<br/>
+<br/>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pack)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.active)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pack)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.active)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>
